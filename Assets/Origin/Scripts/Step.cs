@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Step : MonoBehaviour
 {
+	[SerializeField] private bool generateBeforeRunning;
 	[SerializeField] private bool shouldGenerateSteps;
 	[SerializeField] private bool shouldGenerateDiamond;
 	[SerializeField] private Transform[] stepGenerationPoints;
@@ -10,19 +11,21 @@ public class Step : MonoBehaviour
 	[SerializeField] private Step stepPrefab;
 	[SerializeField] private Diamond diamondPrefab;
 
+	private Diamond newDiamond;
+
 	// to prevent the accidentally generated straight lines by random 
-	private static int similarityCounter;       
+	private static int similarityCounter;
 	private static int previousIndex;
 	// --------------------------------------------------------------
 
 	private void Update() // only generate once and only if the game is running
 	{
-		if (shouldGenerateSteps && Manager.Instance.State == GameState.Running)
+		if (shouldGenerateSteps && (Manager.Instance.State == GameState.Running || generateBeforeRunning))
 		{
 			shouldGenerateSteps = false;
 			StartCoroutine(GenerateSteps());
 		}
-		if (shouldGenerateDiamond && Manager.Instance.State == GameState.Running)
+		if (shouldGenerateDiamond && (Manager.Instance.State == GameState.Running || generateBeforeRunning))
 		{
 			shouldGenerateDiamond = false;
 			GenerateDiamond();
@@ -38,7 +41,7 @@ public class Step : MonoBehaviour
 	private void GenerateDiamond()
 	{
 		if (Random.Range(0.0f, 1.0f) < Manager.Instance.DiamondsPercentage)
-			Instantiate(diamondPrefab, diamondGenerationPoint.position, Quaternion.AngleAxis(90, Vector3.right));
+			newDiamond = Instantiate(diamondPrefab, diamondGenerationPoint.position, Quaternion.AngleAxis(90, Vector3.right));
 	}
 
 	private IEnumerator GenerateSteps()
@@ -58,6 +61,7 @@ public class Step : MonoBehaviour
 
 	private IEnumerator AutoDestory()
 	{
+		if (newDiamond != null) Destroy(newDiamond.gameObject);
 		GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 		GetComponent<Rigidbody>().AddForce(Physics.gravity);
 		yield return new WaitForSeconds(Manager.Instance.StepDestroyTime);

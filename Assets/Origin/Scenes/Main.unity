@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 117816505}
   - component: {fileID: 117816506}
   m_Layer: 0
-  m_Name: DiamondCollected-01
+  m_Name: CollectSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1339,7 +1339,7 @@ GameObject:
   - component: {fileID: 332312689}
   - component: {fileID: 332312690}
   m_Layer: 0
-  m_Name: Swape-02
+  m_Name: SwapSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1372,7 +1372,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fe9dd4f887146d544b0de5614ae1946a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4519,6 +4519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1094089463}
+  - component: {fileID: 1094089464}
   m_Layer: 0
   m_Name: Sounds
   m_TagString: Untagged
@@ -4544,6 +4545,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1094089464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094089462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa772e2d6ca60b44bfca4ba8da68d49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1169337993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6004,7 +6017,7 @@ GameObject:
   - component: {fileID: 1452549798}
   - component: {fileID: 1452549797}
   m_Layer: 0
-  m_Name: Theme-02
+  m_Name: ThemeSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6022,7 +6035,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6d68fd1e901026d4481d5dde602347d2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.65
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6397,11 +6410,11 @@ RectTransform:
   m_Father: {fileID: 1929709968}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1025.7778}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -800}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1583245646
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6745,9 +6758,8 @@ MonoBehaviour:
   diamondMaxScoreAmmount: 3
   player: {fileID: 2126348884}
   cameraCenter: {fileID: 1916456993}
+  stepsDestroyer: {fileID: 1922857707}
   stepsMaterial: {fileID: 2100000, guid: c9ada3417f5d42847bfb160b0be8edd8, type: 2}
-  swapSound: {fileID: 332312690}
-  collectSound: {fileID: 117816506}
   RunningPanel: {fileID: 2081023705}
   PausedPanel: {fileID: 1929709968}
   OverPanel: {fileID: 1643068897}
@@ -7448,7 +7460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 60, y: -90}
   m_SizeDelta: {x: 150, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1858967242
@@ -7506,8 +7518,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7734,7 +7746,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 20, y: 5, z: 2}
+  m_Size: {x: 100, y: 10, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1929709967
 GameObject:

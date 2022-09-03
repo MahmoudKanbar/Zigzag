@@ -24,9 +24,12 @@ public class Manager : MonoBehaviour
 	[Header("Objects")]
 	[SerializeField] private Transform player;
 	[SerializeField] private Transform cameraCenter;
+	[SerializeField] private Transform stepsDestroyer;
 	[SerializeField] private Material stepsMaterial;
-	[SerializeField] private AudioSource swapSound;
-	[SerializeField] private AudioSource collectSound;
+
+	// Undestroyable objects so we have to find them in the scene
+	private AudioSource swapSound;
+	private AudioSource collectSound;
 
 	[Header("GUI")]
 	[SerializeField] private RectTransform RunningPanel;
@@ -47,6 +50,7 @@ public class Manager : MonoBehaviour
 	public int DiamondMaxScoreAmmount => diamondMaxScoreAmmount;
 	public Transform Player => player;
 	public Transform CameraCenter => cameraCenter;
+	public Transform StepsDestroyer => stepsDestroyer;
 
 	public int PlayerScore { get; private set; }
 	public int PlayerBestScore
@@ -79,7 +83,8 @@ public class Manager : MonoBehaviour
 		if (Instance == null) Instance = this;
 		else throw new System.Exception("There is alredy a Manager in the scene!");
 		State = GameState.Paused;
-
+		swapSound = GameObject.Find("SwapSound").GetComponent<AudioSource>();
+		collectSound = GameObject.Find("CollectSound").GetComponent<AudioSource>();
 		SetPlayerBestScoreText();
 		SetGamesPlayedText();
 	}

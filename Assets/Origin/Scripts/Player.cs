@@ -30,5 +30,8 @@ public class Player : MonoBehaviour
 	{
 		if (Manager.Instance.State == GameState.Running)
 			Manager.Instance.CameraCenter.position = transform.position;
+		else if (Manager.Instance.State == GameState.Over)
+			Manager.Instance.StepsDestroyer.position += Manager.Instance.PlayerSpeed * Time.deltaTime * 
+				Manager.Instance.StepsDestroyer.forward;
 	}
 }

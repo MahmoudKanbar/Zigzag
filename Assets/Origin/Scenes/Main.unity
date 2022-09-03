@@ -6752,7 +6752,7 @@ MonoBehaviour:
   playerSpeed: 4
   diamondsPercentage: 0.1
   stepGenerateTime: 0.2
-  stepDestroyTime: 1
+  stepDestroyTime: 3
   changingColorTime: 2.5
   straightLineLength: 2
   diamondMaxScoreAmmount: 3

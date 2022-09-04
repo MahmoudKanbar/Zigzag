@@ -6751,7 +6751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 4
   diamondsPercentage: 0.1
-  stepGenerateTime: 0.2
+  stepGenerateTime: 0.1
   stepDestroyTime: 3
   changingColorTime: 2.5
   straightLineLength: 2
